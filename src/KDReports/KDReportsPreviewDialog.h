@@ -127,9 +127,9 @@ public:
 
 Q_SIGNALS:
     /// Emitted when the user changes the page size.
-    void pageSizeChanged(QPrinter::PageSize pageSize);
+    void pageSizeChanged(const QPageSize &pageSize);
     /// Emitted when the user changes the page orientation.
-    void orientationChanged(QPrinter::Orientation orientation);
+    void orientationChanged(QPageLayout::Orientation orientation);
 
 public Q_SLOTS:
     /// \reimp

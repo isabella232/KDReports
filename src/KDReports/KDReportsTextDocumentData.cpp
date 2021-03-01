@@ -69,7 +69,7 @@ void KDReports::TextDocumentData::resolveCursorPositions(ModificationMode mode)
     // we modify the document later on, but we can't just store the QTextCursor
     // at insertion time; that cursor would be moved to the end of the document
     // while the insertion keeps happening...
-    QMap<QString, TextValueData>::iterator it = m_textValueCursors.begin();
+    QMultiMap<QString, TextValueData>::iterator it = m_textValueCursors.begin();
     for (; it != m_textValueCursors.end(); ++it) {
         TextValueData &data = *it;
         if (data.cursor.isNull()) {
@@ -300,7 +300,7 @@ void KDReports::TextDocumentData::setFontSizeHelper(QTextCursor &lastCursor, int
 
 QString KDReports::TextDocumentData::asHtml() const
 {
-    QString htmlText = m_document->toHtml("utf-8");
+    QString htmlText = m_document->toHtml();
     htmlText.remove(QLatin1String("margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; "));
     htmlText.remove(QLatin1String("-qt-block-indent:0; "));
     htmlText.remove(QLatin1String("text-indent:0px;"));

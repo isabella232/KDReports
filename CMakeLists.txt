@@ -66,14 +66,14 @@ ecm_setup_version("1.9.50"
 # setup default install locations
 include(InstallLocation)
 
-find_package(Qt5Core QUIET)
+find_package(Qt6Core QUIET)
 
-if(Qt5Core_FOUND)
-  find_package(Qt5 COMPONENTS Widgets PrintSupport Sql Xml Test REQUIRED)
+if(Qt6Core_FOUND)
+  find_package(Qt6 COMPONENTS Widgets PrintSupport Sql Xml Test REQUIRED)
   if(${PROJECT_NAME}_TESTS)
-    find_package(Qt5 COMPONENTS Test REQUIRED)
+    find_package(Qt6 COMPONENTS Test REQUIRED)
   endif()
-  set(QT_LIBRARIES Qt5::Core Qt5::PrintSupport Qt5::Sql Qt5::Xml)
+  set(QT_LIBRARIES Qt6::Core Qt6::PrintSupport Qt6::Sql Qt6::Xml)
   set(QT_USE_FILE "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Qt5Portability.cmake")
 
   if(Qt5_POSITION_INDEPENDENT_CODE)
@@ -91,7 +91,7 @@ if (KDChart_FOUND)
   message(STATUS "Enabling KDChart support")
   add_definitions(-DHAVE_KDCHART)
   # Hack for kdchart versions < kdchart-2.7.1 (when built with cmake)
-  find_package(Qt5Svg CONFIG REQUIRED)
+  find_package(Qt6Svg CONFIG REQUIRED)
   if (NOT TARGET KDChart::kdchart)
     add_library(KDChart::kdchart SHARED IMPORTED)
     set_target_properties(KDChart::kdchart PROPERTIES

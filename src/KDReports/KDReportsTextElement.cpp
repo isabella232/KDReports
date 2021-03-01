@@ -105,7 +105,7 @@ void KDReports::TextElement::build(ReportBuilder &builder) const
     if (d->m_pointSize > 0)
         charFormat.setFontPointSize(d->m_pointSize);
     if (!d->m_fontFamily.isEmpty())
-        charFormat.setFontFamily(d->m_fontFamily);
+        charFormat.setFontFamilies({d->m_fontFamily});
     if (d->m_foreground.isValid())
         charFormat.setForeground(d->m_foreground);
     charFormat.setBackground(background());

@@ -51,15 +51,15 @@ QVariant TableModel::data(const QModelIndex &index, int role) const
 {
     // FIXME kdchart queries (-1, -1) for empty models
     if (index.row() == -1 || index.column() == -1) {
-        qDebug() << "TableModel::data: row: " << index.row() << ", column: " << index.column() << ", rowCount: " << rowCount() << ", columnCount: " << columnCount() << endl
+        qDebug() << "TableModel::data: row: " << index.row() << ", column: " << index.column() << ", rowCount: " << rowCount() << ", columnCount: " << columnCount() << Qt::endl
                  << "TableModel::data: FIXME fix kdchart views to not query"
                     " model data for invalid indices!"
-                 << endl;
+                 << Qt::endl;
         return QVariant();
     }
 
     //     qDebug () << "TableModel::data: row: "<< index.row() << ", column: "
-    //               << index.column() << endl;
+    //               << index.column() << Qt::endl;
     Q_ASSERT(index.row() >= 0 && index.row() < rowCount());
     Q_ASSERT(index.column() >= 0 && index.column() < columnCount());
 
@@ -95,7 +95,7 @@ QVariant TableModel::headerData(int section, Qt::Orientation orientation, int ro
     case Qt::ToolTipRole:
         break;
     default:
-        //        qDebug () << "TableModel::headerData: unknown role " << role << "." << endl;
+        //        qDebug () << "TableModel::headerData: unknown role " << role << "." << Qt::endl;
         break;
     }
     return result;
@@ -129,7 +129,7 @@ bool TableModel::loadFromCSV(const QString &filename)
 
         if (data.size() > 0) {
             //             qDebug() << "TableModel::loadFromCSV: " << data.size()
-            //                      << " data rows found." << endl;
+            //                      << " data rows found." << Qt::endl;
 
             m_rows.resize(data.size() - 1);
 
@@ -183,16 +183,16 @@ bool TableModel::loadFromCSV(const QString &filename)
         if (m_rows.size() > 0) {
             //             qDebug() << "TableModel::loadFromCSV: table loaded, "
             //                      << rowCount() << " rows, " << columnCount() << "columns."
-            //                      << endl;
+            //                      << Qt::endl;
         } else {
             qDebug() << "TableModel::loadFromCSV: table loaded, but no "
                         "model data found."
-                     << endl;
+                     << Qt::endl;
         }
         endResetModel();
         return true;
     } else {
-        qDebug() << "TableModel::loadFromCSV: file" << filename << "does not exist / or could not be opened" << endl;
+        qDebug() << "TableModel::loadFromCSV: file" << filename << "does not exist / or could not be opened" << Qt::endl;
         return false;
     }
 }

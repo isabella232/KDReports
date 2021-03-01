@@ -102,9 +102,9 @@ void FontScaler::setFactorForWidth(qreal wantedFactor, const QString &sampleText
     // Just applying that scaling factor for the font size isn't enough,
     // fonts do not scale proportionnally. We need do this like
     // "scale the font so that this text fits into this width"
-    const qreal initialWidth = m_initialFontMetrics.width(sampleText);
+    const qreal initialWidth = m_initialFontMetrics.horizontalAdvance(sampleText);
     const qreal wantedWidth = initialWidth * wantedFactor;
-    qreal width = m_fontMetrics.width(sampleText);
+    qreal width = m_fontMetrics.horizontalAdvance(sampleText);
 #ifdef DEBUG_LAYOUT
     qDebug() << " FontScaler: sampleText with initialFontMetrics:" << initialWidth << "with current fontMetrics:" << width << "wanted:" << wantedWidth;
 #endif
@@ -115,7 +115,7 @@ void FontScaler::setFactorForWidth(qreal wantedFactor, const QString &sampleText
         qreal factor = wantedWidth / width;
         applyAdditionalScalingFactor(factor);
         qreal prevWidth = width;
-        width = m_fontMetrics.width(sampleText);
+        width = m_fontMetrics.horizontalAdvance(sampleText);
 #ifdef DEBUG_LAYOUT
         qDebug() << "  FontScaler: width=" << width << "factor=" << factor << "m_scalingFactor=" << m_scalingFactor;
 #endif

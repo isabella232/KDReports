@@ -39,13 +39,13 @@ macro(add_unittest _source)
   endforeach()
 
   if(_resource)
-    qt5_add_resources(_srcs ${_resource})
+    qt_add_resources(_srcs ${_resource})
   endif()
 
   add_executable(${_name} ${_srcs})
 
   add_test(NAME kdreports-${_name} COMMAND ${_name})
-  target_link_libraries(${_name} ${QT_LIBRARIES} Qt5::Test kdreports)
+  target_link_libraries(${_name} ${QT_LIBRARIES} Qt6::Test kdreports)
 endmacro()
 
 add_subdirectory(ElementCopying)

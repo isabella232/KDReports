@@ -256,6 +256,7 @@ public:
      */
     void setParagraphMargins(qreal left, qreal top, qreal right, qreal bottom);
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     /**
      * Sets the page size of the report. Example: setPageSize(QPrinter::A4) or setPageSize(QPrinter::Letter);
      * Note that for performance reasons, it is recommended to do this after
@@ -281,6 +282,13 @@ public:
      * \return the orientation set by setOrientation. The default orientation is QPrinter::Portrait.
      */
     QPrinter::Orientation orientation() const;
+#else
+    void setPageSize( const QPageSize& size );
+    void setPaperSize( const QSizeF & paperSize, QPageSize::Unit unit );
+    QPageSize pageSize() const;
+    void setOrientation( QPageLayout::Orientation orientation );
+    QPageLayout::Orientation orientation() const;
+#endif
 
     /**
      * Set a custom page size for an endless printer.

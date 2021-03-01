@@ -86,21 +86,28 @@ public:
      */
     Element *clone() const override { return 0; } // krazy:exclude=inline
 
+    // public for QMap
     /**
      * @internal - do not call
      */
-    ~Cell() override; // public for QMap
+    ~Cell() override;
 
-private:
-    // TableElement needs to create/copy cells
-    friend class TableElement;
-    friend class QMap<QPair<int, int>, Cell>;
-    friend struct QMapData<QPair<int, int>, Cell>;
-    friend struct QMapNode<QPair<int, int>, Cell>;
+    /**
+     * @internal - do not call
+     */
     Cell();
+
+    /**
+     * @internal - do not call
+     */
     Cell(const Cell &other);
+
+    /**
+     * @internal - do not call
+     */
     Cell &operator=(const Cell &other);
 
+private:
     CellPrivate *const d;
 };
 

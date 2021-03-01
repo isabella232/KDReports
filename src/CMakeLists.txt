@@ -21,10 +21,10 @@ set(FORMS
   KDReports/tablebreakingdialogbase.ui
 )
 
-qt5_wrap_ui(KDREPORTS_UI ${FORMS})
+qt_wrap_ui(KDREPORTS_UI ${FORMS})
 
 set(RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/../pics/pics.qrc)
-qt5_add_resources(KDREPORTS_RES ${RESOURCES})
+qt_add_resources(KDREPORTS_RES ${RESOURCES})
 
 if(NOT EXISTS ${CMAKE_CURRENT_BINARY_DIR}/KDReports)
   file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/KDReports)
